@@ -1,1 +1,1 @@
-{"ProjectWatches":"{\"Value\":[]}","OpenedDocuments":"[\"Main.xaml\"]","ProjectBreakpoints":"{\"Value\":{}}"}
+{"ProjectWatches":"{\"Value\":[]}","OpenedDocuments":"[\"Main.xaml\",\"Test.xaml\"]","ProjectBreakpoints":"{\"Value\":{\"Main.xaml\":[{\"ConditionalExpression\":null,\"ActionExpression\":null,\"ExpectedHitCounter\":null,\"ShouldContinueAfterAction\":false,\"IsEnabled\":true,\"ActivityIdRef\":\"BrowserScope_5\",\"ActivityId\":\"1.31\",\"ActivityName\":\"Download Files\"}]}}"}
