@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1783,5845</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1783,5788</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SetCustomize_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -74,7 +74,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SetCustomize" sap:VirtualizedContainerService.HintSize="1793,5780" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SetCustomize" sap:VirtualizedContainerService.HintSize="1793,5596" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="outputFileName" />
       <Variable x:TypeArguments="x:String" Name="dateAtbName" />
@@ -185,13 +185,13 @@
       </Assign.Value>
     </Assign>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1751,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;==== Download Detail ====&quot; + vbCrLf + &quot;regionName : &quot; + in_regionName + vbCrLf + &quot;age : &quot; + in_age + vbCrLf + &quot;isTimeSeries : &quot; + in_isTimeSeries.ToString]" />
-    <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Browser="[in_browser]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="1751,4452" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[in_browser]">
+    <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Browser="[in_browser]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="1751,4268" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[in_browser]">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Browser Do" sap:VirtualizedContainerService.HintSize="1717,4344" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Browser Do" sap:VirtualizedContainerService.HintSize="1717,4160" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -350,21 +350,15 @@
                 </Sequence>
               </If.Then>
             </If>
-            <If Condition="[String.IsNullOrEmpty(in_age)]" sap:VirtualizedContainerService.HintSize="1675,2657" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[String.IsNullOrEmpty(in_age)]" sap:VirtualizedContainerService.HintSize="1675,2473" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <If Condition="[in_isTimeSeries]" sap:VirtualizedContainerService.HintSize="713,269" sap2010:WorkflowViewState.IdRef="If_9">
                   <If.Then>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TimeSeriesDownloadFile" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Invoke\TimeSeriesDownloadFile.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_outputName">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="outputFileName + &quot;_All&quot;" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
-                          <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="in_browser" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">
-                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_timeout" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_outputName">[outputFileName + "_All"]</InArgument>
+                        <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[in_browser]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">[in_timeout]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </If.Then>
@@ -380,7 +374,7 @@
                 </If>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="917,2500" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="917,2316" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -405,16 +399,16 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="875,1840" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Split(in_age.Replace(&quot; &quot;, &quot;&quot;), &quot;,&quot;)]">
+                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="875,1932" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Split(in_age.Replace(&quot; &quot;, &quot;&quot;), &quot;,&quot;)]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="x:String">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:String" Name="ageStr" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="For Each Age Do" sap:VirtualizedContainerService.HintSize="839,1707" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <Sequence DisplayName="For Each Age Do" sap:VirtualizedContainerService.HintSize="839,1799" sap2010:WorkflowViewState.IdRef="Sequence_5">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="s:String[]" Name="ageGroupSplit" />
-                            <Variable x:TypeArguments="s:String[]" Name="ageDashSplit" />
+                            <Variable x:TypeArguments="s:String[]" Name="ageSplit" />
                             <Variable x:TypeArguments="x:String" Name="outputFileNameFull" />
                           </Sequence.Variables>
                           <sap:WorkflowViewStateService.ViewState>
@@ -458,39 +452,61 @@
                               </ActivityAction>
                             </ui:ForEach.Body>
                           </ui:ForEach>
-                          <Assign sap:VirtualizedContainerService.HintSize="797,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="s:String[]">[ageDashSplit]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="s:String[]">[Split(ageStr, "-")]</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                          <If sap2010:Annotation.AnnotationText="Set outputName" Condition="[ageStr.IndexOf(&quot;+&quot;) &lt; 0 Or ageDashSplit.Length &lt; 2]" sap:VirtualizedContainerService.HintSize="797,248" sap2010:WorkflowViewState.IdRef="If_3">
+                          <If sap2010:Annotation.AnnotationText="Set outputName" Condition="[ageStr.IndexOf(&quot;+&quot;) &lt; 0]" sap:VirtualizedContainerService.HintSize="797,440" sap2010:WorkflowViewState.IdRef="If_3">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <If.Then>
-                              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:String">[outputFileNameFull]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">[outputFileName + "_" + If(ageDashSplit.Length &gt; 2, ageDashSplit(0) + "-" + ageDashSplit(2), ageStr)]</InArgument>
-                                </Assign.Value>
-                              </Assign>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="s:String[]">[ageSplit]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="s:String[]">[Split(ageStr, "-")]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[outputFileNameFull]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[outputFileName + "_" + ageSplit(0) + "-" + ageSplit(ageSplit.Length - 1)]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
                             </If.Then>
                             <If.Else>
-                              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:String">[outputFileNameFull]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">[outputFileName + "_" + ageDashSplit(0) + "+"]</InArgument>
-                                </Assign.Value>
-                              </Assign>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="s:String[]">[ageSplit]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="s:String[]">[Split(ageStr, "&amp;")]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[outputFileNameFull]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[outputFileName + "_" + If(ageSplit.Length &lt; 2, ageStr, Split(ageStr, "-")(0) + "-" + ageSplit(ageSplit.Length - 1))]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
                             </If.Else>
                           </If>
                           <If Condition="[in_isTimeSeries]" sap:VirtualizedContainerService.HintSize="797,569" sap2010:WorkflowViewState.IdRef="If_6">
@@ -654,7 +670,6 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <If Condition="[in_isTimeSeries =False]" sap:VirtualizedContainerService.HintSize="875,236" sap2010:WorkflowViewState.IdRef="If_10" />
                 </Sequence>
               </If.Else>
             </If>
