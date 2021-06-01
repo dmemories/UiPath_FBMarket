@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Test" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="909,647" sap2010:WorkflowViewState.IdRef="Test_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Test" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="866,647" sap2010:WorkflowViewState.IdRef="Test_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
@@ -66,9 +66,10 @@
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Test" sap:VirtualizedContainerService.HintSize="476,344" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Test" sap:VirtualizedContainerService.HintSize="272,153" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt" />
       <Variable x:TypeArguments="x:String" Name="str" />
@@ -78,39 +79,6 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Attach Browser 'firefox.exe Market'" sap:VirtualizedContainerService.HintSize="434,252" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="23479eed9c3bfc9a68261fd73ad29b9d" Selector="&lt;html app='firefox.exe' title='Market Insights - Time Series | Actionable Insights' /&gt;">
-      <ui:BrowserScope.Body>
-        <ActivityAction x:TypeArguments="x:Object">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-          </ActivityAction.Argument>
-          <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'firefox.exe Market'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_2" KeyModifiers="None" MouseButton="BTN_LEFT">
-            <ui:ClickImage.CursorPosition>
-              <ui:CursorPosition Position="Center">
-                <ui:CursorPosition.OffsetX>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:CursorPosition.OffsetX>
-                <ui:CursorPosition.OffsetY>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:CursorPosition.OffsetY>
-              </ui:CursorPosition>
-            </ui:ClickImage.CursorPosition>
-            <ui:ClickImage.Image>
-              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFEAAAAZCAYAAABJhMI3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQ4SURBVGhD7ZfRayJHHMf71wwMcuyD1OZiLwSFCFXpBUqFxDxUirTBMw8BQwI59A6k7EvgiCC0vTyEu1ytLzlMCQEDl0pKSpoUvCOQgNAc1sDpwz4UYV++/e3sqqtovNztIRz7gQVnf7Mz3/nu/uY3fgKb98Y20QJsEy3ANtECbBMtwDbRAmwTLcA20QL6mrgdZWBs0BXFNvXZmedgd7Oo6o98UNTab1iaksANDVyawrc/n6JpxG+K1dr7mthsVFGt6tfB/Umwyfs4MNrVakOIVysHKJ6/6zJuwglSbgZn9Blei+lUKH+m4eMcc1uK6HFTrNY+NJ3PZC+YV8aZ0W5xeZhD7vBSbygvsZs7xGXzHMVMErFkxhCponb8C+REAvJGEb26m+dFbMgJJDMFHNdU424PZzK8bBLpstE22F+UwGY20bZRm3tDRoLmLhzXaGYd5eUu6ayQjsdIJp6KdXRpF2g6C8gkr9eZkDf6mv/OJoqUj2qJTYiFOuGaCiISiyEWmqDUc2PuGz/GgxHEYhEEXRycUugf/QnUt6Nw8gmEtP6zHji4D3K5j5HqHhYkBu/yCwzymQZD1MkxEaKxYrPwODh8clkYKfQ7SZt0B9PTP2CX7nVpp15l2Qfu9AvtkaCLftOWVdejXTojQbi4E9FW0MBCEwNYbzlEVq0HKB5Yb5uGchqTzIe1C/qtbGGOS1jYa7miorQ8Bk7j9fOpXkrB79D2QjLinoznrxRTPwVbcxzSwl77nlpaxhgnI+iGrj8N8/vp0n6SgrtLex2Pv6aXJmsrfoOfvmKYNKXBiezH7cgTo6VjoYl6wWnR/bYJ0ccLoW1nnr7UAFZylFatayXQd542qoJXz2Xcm74DiTM4/CmUxAexg3lqB1ZMY+VWEDDmEvrNOgiztos1H9hYBI9MWh5FxtrxM4prX+lSpoi/r8wvr8NoTKQUYbc8CGspYr4eFt6qYqq1F1j2UrFZ+p1alMrsFjzhnrFiD1GgwYaZKOKffYnvup6l68e/RJx2RLz+g/bT2S/wqcThGA8j27PtjMbE/UVIbAabb1Fc3zyJ4LZfphrdzemDz8F8a7jAPhZpz5wZMNgwE6vZu/QlruJItHppokEnkka7ljRp23GLec2MxkT1CKvi2JI3igVVx3wcYfkE/2lNM/VNzNBxxrfaKSxqLU+FhMGd0qxVcbRKC6NikDc6aPF4mIynwYaZ2B4/3Tp3NnEqh/H9r//Sb/145X3QiQkTqUCaGY2JhFqhhXocYFRgJCoa/dKkRfP8GeKmwzZjDnjieVRa3dUK8nGq8IwKjERjOsYRzpqq83UmEvWSjBCdHpiDtJCh0tQS9owCrJazCI93dHJX6Obp/KFRlStUO/lyPc1G+7DfFyo+V9fFh6D9ybhSBrxI7Q/IAJ0jN/FjwDbRAmwTLcA20QJsEy3ANvG9Af4HMnNXBQJRT7UAAAAASUVORK5CYII=" />
-            </ui:ClickImage.Image>
-            <ui:ClickImage.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="ca58002a-906f-43dd-b92c-3bcdc701ed66">
-                <ui:Target.TimeoutMS>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:Target.TimeoutMS>
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:ClickImage.Target>
-          </ui:ClickImage>
-        </ActivityAction>
-      </ui:BrowserScope.Body>
-    </ui:BrowserScope>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;[&quot; + RTrim(LTrim(&quot;      Apr 18, 2021 – May 17, 2021      &quot;)) + &quot;]&quot;]" />
   </Sequence>
 </Activity>
