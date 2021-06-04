@@ -7,10 +7,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>867,1617</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>910,2177</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="25">
+    <scg:List x:TypeArguments="x:String" Capacity="27">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -36,10 +36,12 @@
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -69,7 +71,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DownloadFile" sap:VirtualizedContainerService.HintSize="476,1552" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DownloadFile" sap:VirtualizedContainerService.HintSize="602,2112" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+&quot;\Downloads&quot;]" Name="downloadPath" />
       <Variable x:TypeArguments="si:FileInfo" Name="downloadFIle" />
@@ -79,8 +81,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Download : &quot; + in_outputName]" />
-    <Delay mva:VisualBasic.Settings="{x:Null}" DisplayName="Delay 2 second" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="Delay_1">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="560,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Download : &quot; + in_outputName]" />
+    <Delay mva:VisualBasic.Settings="{x:Null}" DisplayName="Delay 2 second" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="560,22" sap2010:WorkflowViewState.IdRef="Delay_1">
       <TextExpression.Namespaces>
         <sco:Collection x:TypeArguments="x:String">
           <x:String>System.Activities</x:String>
@@ -126,38 +128,83 @@
         </sap2010:ViewStateManager>
       </sap2010:WorkflowViewState.ViewStateManager>
     </Delay>
-    <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" UiBrowser="{x:Null}" Browser="[in_browser]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="434,214" sap2010:WorkflowViewState.IdRef="BrowserScope_1" TimeoutMS="[in_timeout]">
+    <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" UiBrowser="{x:Null}" Browser="[in_browser]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="560,774" sap2010:WorkflowViewState.IdRef="BrowserScope_1" TimeoutMS="[in_timeout]">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image Download" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
-            <ui:ClickImage.CursorPosition>
-              <ui:CursorPosition Position="Center">
-                <ui:CursorPosition.OffsetX>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:CursorPosition.OffsetX>
-                <ui:CursorPosition.OffsetY>
-                  <InArgument x:TypeArguments="x:Int32" />
-                </ui:CursorPosition.OffsetY>
-              </ui:CursorPosition>
-            </ui:ClickImage.CursorPosition>
-            <ui:ClickImage.Image>
-              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAqCAYAAAD1T9h6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMASURBVGhD7ZjLaxRBEMb927x49SqC4MmLByEnQTx48iKSqzfxoHgQCUQxmgTxIMuK+NqwPghGEtw8fMQkIPgo5zdLr7uz/ayeZRnIBx+Z7a6urq+nu7omR6ThOBQwbdQm4Ou+SGdD5ElX5N5LkTttkdutPnmmjT5ssK0L2QLe90QWXovMPS8CfCvyZl1kbVuktyuys9cnz7TRhw22jGFsLtQCPhYBsaqLHZHu5//BxpIxjMUHvrRQCWh9EJl/oQu8SnzgC58aJAnY/9l/9WwDWzA5xCe+mSMF0QJwzOtur9oDqIP4Zo4UEdECWJ1JBm/IHMwViygB7M9JbBsXmSv2TAQFkCE4ZLaJJknmjMlOQQHsyTqyTSqZk7lD8ArgoiFX2ybwcfuHyNEzcyOkzWbrI3OHLjuvAA6TZvVX1g7k+MyDwW8EtLvfR2xiyNyhA+0UQL3ClW9zHOLisy05d+Xp4PfMbEsetjdHbGJJDL7aySmgLMyUmefG/VW5fP3V4DfPtA3bxJIYiMUFpwAqR4ovm9MQqwFXBaWwLACLWFxwCiADUEHanIZY3TLVLZVCYvBlI6cAavjhkjiGvW9/yr8nzj8qD7Jp55m2YZtYEgOxuOAUwIeIzaGLBGlS5rGz82P9tJn+Tzu/xvp9JBYXahMAT15YktlbK9Y+ePVmpxSwufvX2u+iSoBmC7Gypy89toqgjb71L7/H+nxUbyHtIbaJMMGnbh2oPsQ5adSIIH1eu/tOHTxUp9GciwwS8KmLyyW1wUP1RZZaSrDStnYbU2zVpQRIKebILrZ2G2Nts4o5kFJOs1VMng8RW5uPKrPLaUAG0JTUuWROX/YxCApo/CclaPRHvQGHqbH/VgGN/8cWwDGrM4nthE98pwQPkgQYsD85ZHVkJ3zgK3bPV6ESAMgQvG5ytUYIYxiLj5hs44JagAEXDa+eK59tQPFFBTlcivNMW1mYFTbYMiZ0ScUgW4AB9UpZABaVI6tKDc+HCOSZNvqw8dU2qahNwLRwKGC6EPkHzuNrhGdIwKEAAAAASUVORK5CYII=" />
-            </ui:ClickImage.Image>
-            <ui:ClickImage.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="07c8375d-a2f8-4d40-bf8c-d772ce864904" TimeoutMS="[in_timeout]">
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:ClickImage.Target>
-          </ui:ClickImage>
+          <Sequence DisplayName="Download Do" sap:VirtualizedContainerService.HintSize="526,666" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="popupExist" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image Download" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:ClickImage.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:ClickImage.CursorPosition>
+              <ui:ClickImage.Image>
+                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAqCAYAAAD1T9h6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMASURBVGhD7ZjLaxRBEMb927x49SqC4MmLByEnQTx48iKSqzfxoHgQCUQxmgTxIMuK+NqwPghGEtw8fMQkIPgo5zdLr7uz/ayeZRnIBx+Z7a6urq+nu7omR6ThOBQwbdQm4Ou+SGdD5ElX5N5LkTttkdutPnmmjT5ssK0L2QLe90QWXovMPS8CfCvyZl1kbVuktyuys9cnz7TRhw22jGFsLtQCPhYBsaqLHZHu5//BxpIxjMUHvrRQCWh9EJl/oQu8SnzgC58aJAnY/9l/9WwDWzA5xCe+mSMF0QJwzOtur9oDqIP4Zo4UEdECWJ1JBm/IHMwViygB7M9JbBsXmSv2TAQFkCE4ZLaJJknmjMlOQQHsyTqyTSqZk7lD8ArgoiFX2ybwcfuHyNEzcyOkzWbrI3OHLjuvAA6TZvVX1g7k+MyDwW8EtLvfR2xiyNyhA+0UQL3ClW9zHOLisy05d+Xp4PfMbEsetjdHbGJJDL7aySmgLMyUmefG/VW5fP3V4DfPtA3bxJIYiMUFpwAqR4ovm9MQqwFXBaWwLACLWFxwCiADUEHanIZY3TLVLZVCYvBlI6cAavjhkjiGvW9/yr8nzj8qD7Jp55m2YZtYEgOxuOAUwIeIzaGLBGlS5rGz82P9tJn+Tzu/xvp9JBYXahMAT15YktlbK9Y+ePVmpxSwufvX2u+iSoBmC7Gypy89toqgjb71L7/H+nxUbyHtIbaJMMGnbh2oPsQ5adSIIH1eu/tOHTxUp9GciwwS8KmLyyW1wUP1RZZaSrDStnYbU2zVpQRIKebILrZ2G2Nts4o5kFJOs1VMng8RW5uPKrPLaUAG0JTUuWROX/YxCApo/CclaPRHvQGHqbH/VgGN/8cWwDGrM4nthE98pwQPkgQYsD85ZHVkJ3zgK3bPV6ESAMgQvG5ytUYIYxiLj5hs44JagAEXDa+eK59tQPFFBTlcivNMW1mYFTbYMiZ0ScUgW4AB9UpZABaVI6tKDc+HCOSZNvqw8dU2qahNwLRwKGC6EPkHzuNrhGdIwKEAAAAASUVORK5CYII=" />
+              </ui:ClickImage.Image>
+              <ui:ClickImage.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="07c8375d-a2f8-4d40-bf8c-d772ce864904" TimeoutMS="[in_timeout]">
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:ClickImage.Target>
+            </ui:ClickImage>
+            <ui:UiElementExists DisplayName="Popup Download Exist" Exists="[popupExist]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6c8aed14-3d42-4582-b06b-0dcc9e639fab" InformativeScreenshot="9508ad0e0174bd45de635c7c68f86b93" Selector="&lt;wnd app='firefox.exe' cls='MozillaDialogClass' title='*' /&gt;" TimeoutMS="[in_timeout]">
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <If Condition="[popupExist = False]" sap:VirtualizedContainerService.HintSize="484,282" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image Download" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:ClickImage.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:ClickImage.CursorPosition>
+                  <ui:ClickImage.Image>
+                    <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAqCAYAAAD1T9h6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMASURBVGhD7ZjLaxRBEMb927x49SqC4MmLByEnQTx48iKSqzfxoHgQCUQxmgTxIMuK+NqwPghGEtw8fMQkIPgo5zdLr7uz/ayeZRnIBx+Z7a6urq+nu7omR6ThOBQwbdQm4Ou+SGdD5ElX5N5LkTttkdutPnmmjT5ssK0L2QLe90QWXovMPS8CfCvyZl1kbVuktyuys9cnz7TRhw22jGFsLtQCPhYBsaqLHZHu5//BxpIxjMUHvrRQCWh9EJl/oQu8SnzgC58aJAnY/9l/9WwDWzA5xCe+mSMF0QJwzOtur9oDqIP4Zo4UEdECWJ1JBm/IHMwViygB7M9JbBsXmSv2TAQFkCE4ZLaJJknmjMlOQQHsyTqyTSqZk7lD8ArgoiFX2ybwcfuHyNEzcyOkzWbrI3OHLjuvAA6TZvVX1g7k+MyDwW8EtLvfR2xiyNyhA+0UQL3ClW9zHOLisy05d+Xp4PfMbEsetjdHbGJJDL7aySmgLMyUmefG/VW5fP3V4DfPtA3bxJIYiMUFpwAqR4ovm9MQqwFXBaWwLACLWFxwCiADUEHanIZY3TLVLZVCYvBlI6cAavjhkjiGvW9/yr8nzj8qD7Jp55m2YZtYEgOxuOAUwIeIzaGLBGlS5rGz82P9tJn+Tzu/xvp9JBYXahMAT15YktlbK9Y+ePVmpxSwufvX2u+iSoBmC7Gypy89toqgjb71L7/H+nxUbyHtIbaJMMGnbh2oPsQ5adSIIH1eu/tOHTxUp9GciwwS8KmLyyW1wUP1RZZaSrDStnYbU2zVpQRIKebILrZ2G2Nts4o5kFJOs1VMng8RW5uPKrPLaUAG0JTUuWROX/YxCApo/CclaPRHvQGHqbH/VgGN/8cWwDGrM4nthE98pwQPkgQYsD85ZHVkJ3zgK3bPV6ESAMgQvG5ytUYIYxiLj5hs44JagAEXDa+eK59tQPFFBTlcivNMW1mYFTbYMiZ0ScUgW4AB9UpZABaVI6tKDc+HCOSZNvqw8dU2qahNwLRwKGC6EPkHzuNrhGdIwKEAAAAASUVORK5CYII=" />
+                  </ui:ClickImage.Image>
+                  <ui:ClickImage.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="07c8375d-a2f8-4d40-bf8c-d772ce864904" TimeoutMS="[in_timeout]">
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:ClickImage.Target>
+                </ui:ClickImage>
+              </If.Then>
+            </If>
+          </Sequence>
         </ActivityAction>
       </ui:BrowserScope.Body>
     </ui:BrowserScope>
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" Window="{x:Null}" sap2010:Annotation.AnnotationText="Use to wait popup appear" DisplayName="Attach Window Firefox Popup" sap:VirtualizedContainerService.HintSize="434,199" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="1aad751a0ba6aa47b6c719bc963b6819" Selector="&lt;wnd app='firefox.exe' cls='MozillaDialogClass' title='*' /&gt;" TimeoutMS="[in_timeout]">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" Window="{x:Null}" sap2010:Annotation.AnnotationText="Use to wait popup appear" DisplayName="Attach Window Firefox Popup" sap:VirtualizedContainerService.HintSize="560,199" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="1aad751a0ba6aa47b6c719bc963b6819" Selector="&lt;wnd app='firefox.exe' cls='MozillaDialogClass' title='*' /&gt;" TimeoutMS="[in_timeout]">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -217,7 +264,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WindowScope>
-    <ui:GetLastDownloadedFile DisplayName="Wait for Download" DownloadFolder="[downloadPath]" File="[downloadFIle]" sap:VirtualizedContainerService.HintSize="434,551" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1" Timeout="[(in_timeout * 2)]">
+    <ui:GetLastDownloadedFile DisplayName="Wait for Download" DownloadFolder="[downloadPath]" File="[downloadFIle]" sap:VirtualizedContainerService.HintSize="560,551" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1" Timeout="[(in_timeout * 2)]">
       <ui:GetLastDownloadedFile.Body>
         <ActivityAction>
           <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,344" sap2010:WorkflowViewState.IdRef="Sequence_2">

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vvVHysUux0bhlpUX+yTAsrqRBGvLMafAY4Ix4qwmiBXTYwc896jMXg4aC3EXk1dE2/6dpZfu0FCwxzYjQV8Rpw==",
+  "dgSpecHash": "APHyLC9a/ZQN3t+ZOO61c3jwP9bwxlRXW3iuLq219EHjhzu8rqoGMW0ipnS/4NK1InSiPzpfyLkuOzXA09Tq6w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alkaiser\\Documents\\UiPath\\FB Market\\FB Market\\.local\\",
+  "projectFilePath": "C:\\Users\\Alkaiser\\Desktop\\UiPath_FBMarket\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\Alkaiser\\.nuget\\packages\\avalonedit\\5.0.3\\avalonedit.5.0.3.nupkg.sha512",
     "C:\\Users\\Alkaiser\\.nuget\\packages\\closedxml\\0.87.1\\closedxml.0.87.1.nupkg.sha512",

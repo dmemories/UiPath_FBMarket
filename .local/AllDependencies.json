@@ -4862,9 +4862,9 @@
     "restore": {
       "projectUniqueName": "FB Market",
       "projectName": "FB Market",
-      "projectPath": "C:\\Users\\Alkaiser\\Documents\\UiPath\\FB Market\\FB Market\\.local",
+      "projectPath": "C:\\Users\\Alkaiser\\Desktop\\UiPath_FBMarket\\.local",
       "packagesPath": "C:\\Users\\Alkaiser\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alkaiser\\Documents\\UiPath\\FB Market\\FB Market\\.local"
+      "outputPath": "C:\\Users\\Alkaiser\\Desktop\\UiPath_FBMarket\\.local"
     },
     "frameworks": {
       "net461": {
