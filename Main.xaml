@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="912,928" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="878,928" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="41">
       <x:String>System.Activities</x:String>
@@ -45,7 +45,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="74">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -108,7 +108,8 @@
           <Variable x:TypeArguments="x:String" Default="FBmpd01" Name="g_fbPassword" />
           <Variable x:TypeArguments="sd:DataTable" Name="g_downloadTable" />
           <Variable x:TypeArguments="sd:DataTable" Name="g_regionTable" />
-          <Variable x:TypeArguments="x:String" Name="g_downloadDate" />
+          <Variable x:TypeArguments="x:String" Name="g_specificDownloadDate" />
+          <Variable x:TypeArguments="x:String" Name="g_outputCurrentDateText" />
         </Flowchart.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -170,15 +171,15 @@
                     </ui:ExcelReadRange>
                     <ui:ExcelReadCell Cell="A2" DisplayName="Read Cell (Specific Date)" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="Date">
                       <ui:ExcelReadCell.Result>
-                        <OutArgument x:TypeArguments="x:String">[g_downloadDate]</OutArgument>
+                        <OutArgument x:TypeArguments="x:String">[g_specificDownloadDate]</OutArgument>
                       </ui:ExcelReadCell.Result>
                     </ui:ExcelReadCell>
                     <Assign sap2010:Annotation.AnnotationText="Remove space from donwloadDate" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="Assign_5">
                       <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[g_downloadDate]</OutArgument>
+                        <OutArgument x:TypeArguments="x:String">[g_specificDownloadDate]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[RTrim(LTrim(g_downloadDate))]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[RTrim(LTrim(g_specificDownloadDate))]</InArgument>
                       </Assign.Value>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -190,6 +191,14 @@
                 </ActivityAction>
               </ui:ExcelApplicationScope.Body>
             </ui:ExcelApplicationScope>
+            <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[g_outputCurrentDateText]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("yyyyMMdd")]</InArgument>
+              </Assign.Value>
+            </Assign>
             <ui:FilterDataTable DataTable="[g_regionTable]" DisplayName="Filter Data Table (Clear Empty)" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="434,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[g_regionTable]" SelectColumnsMode="Keep">
               <ui:FilterDataTable.Filters>
                 <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
@@ -426,13 +435,13 @@
                       <av:PointCollection x:Key="ConnectorLocation">290,449 290,494</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Download Files" sap:VirtualizedContainerService.HintSize="823,2410" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                  <Sequence DisplayName="Download Files" sap:VirtualizedContainerService.HintSize="865,2602" sap2010:WorkflowViewState.IdRef="Sequence_33">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Initial Filter" Browser="[g_browser]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="781,1768" sap2010:WorkflowViewState.IdRef="BrowserScope_6" UiBrowser="[g_browser]">
+                    <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Initial Filter" Browser="[g_browser]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="823,1768" sap2010:WorkflowViewState.IdRef="BrowserScope_6" UiBrowser="[g_browser]">
                       <ui:BrowserScope.Body>
                         <ActivityAction x:TypeArguments="x:Object">
                           <ActivityAction.Argument>
@@ -658,75 +667,99 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:BrowserScope>
-                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[g_downloadTable]" DisplayName="Foreach downloadTable" sap:VirtualizedContainerService.HintSize="781,510" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[g_downloadTable]" DisplayName="Foreach downloadTable" sap:VirtualizedContainerService.HintSize="823,702" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
                       <ui:ForEachRow.Body>
                         <ActivityAction x:TypeArguments="sd:DataRow">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="downloadRow" />
                           </ActivityAction.Argument>
-                          <If Condition="[downloadRow(0).ToString.ToLower.Equals(&quot;true&quot;)]" DisplayName="If eachRegion" sap:VirtualizedContainerService.HintSize="747,390" sap2010:WorkflowViewState.IdRef="If_3">
-                            <If.Then>
-                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[g_regionTable]" DisplayName="Foreach regionTable" sap:VirtualizedContainerService.HintSize="368,232" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
-                                <ui:ForEachRow.Body>
-                                  <ActivityAction x:TypeArguments="sd:DataRow">
-                                    <ActivityAction.Argument>
-                                      <DelegateInArgument x:TypeArguments="sd:DataRow" Name="regionRow" />
-                                    </ActivityAction.Argument>
-                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetCustomize" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Invoke\SetCustomize.xaml">
-                                      <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_regionName">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="regionRow(0).ToString" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_isTimeSeries">
-                                          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="downloadRow(1).ToString.ToLower.Equals(&quot;true&quot;)" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_demographics">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="downloadRow(2).ToString" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
-                                          <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="g_browser" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">
-                                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="g_timeout" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_outputPath">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="g_outputPath" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_downloadDate">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="g_downloadDate" />
-                                        </InArgument>
-                                      </ui:InvokeWorkflowFile.Arguments>
-                                    </ui:InvokeWorkflowFile>
-                                  </ActivityAction>
-                                </ui:ForEachRow.Body>
-                              </ui:ForEachRow>
-                            </If.Then>
-                            <If.Else>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetCustomize" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Invoke\SetCustomize.xaml">
-                                <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_regionName" />
-                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_isTimeSeries">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="downloadRow(1).ToString.ToLower.Equals(&quot;true&quot;)" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_demographics">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="downloadRow(2).ToString" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
-                                    <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="g_browser" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="g_timeout" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_outputPath">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="g_outputPath" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_downloadDate">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="g_downloadDate" />
-                                  </InArgument>
-                                </ui:InvokeWorkflowFile.Arguments>
-                              </ui:InvokeWorkflowFile>
-                            </If.Else>
-                          </If>
+                          <Sequence DisplayName="foreach downloadTable" sap:VirtualizedContainerService.HintSize="789,582" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:Int32" Name="marketInsight" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="747,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[marketInsight]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[CInt(downloadRow(1).ToString)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <If Condition="[downloadRow(0).ToString.ToLower.Equals(&quot;true&quot;)]" DisplayName="If eachRegion" sap:VirtualizedContainerService.HintSize="747,390" sap2010:WorkflowViewState.IdRef="If_3">
+                              <If.Then>
+                                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[g_regionTable]" DisplayName="Foreach regionTable" sap:VirtualizedContainerService.HintSize="368,232" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+                                  <ui:ForEachRow.Body>
+                                    <ActivityAction x:TypeArguments="sd:DataRow">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="sd:DataRow" Name="regionRow" />
+                                      </ActivityAction.Argument>
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetCustomize" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Invoke\SetCustomize.xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_regionName">
+                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="regionRow(0).ToString" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:Int32" x:Key="in_marketInsight">
+                                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="marketInsight" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_demographics">
+                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="downloadRow(2).ToString" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
+                                            <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="g_browser" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">
+                                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="g_timeout" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_outputPath">
+                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="g_outputPath" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_specificDownloadDate">
+                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="g_specificDownloadDate" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_outputCurrentDateText">
+                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="g_outputCurrentDateText" />
+                                          </InArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
+                                      </ui:InvokeWorkflowFile>
+                                    </ActivityAction>
+                                  </ui:ForEachRow.Body>
+                                </ui:ForEachRow>
+                              </If.Then>
+                              <If.Else>
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetCustomize" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Invoke\SetCustomize.xaml">
+                                  <ui:InvokeWorkflowFile.Arguments>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_regionName" />
+                                    <InArgument x:TypeArguments="x:Int32" x:Key="in_marketInsight">
+                                      <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="marketInsight" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_demographics">
+                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="downloadRow(2).ToString" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
+                                      <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="g_browser" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">
+                                      <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="g_timeout" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_outputPath">
+                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="g_outputPath" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_specificDownloadDate">
+                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="g_specificDownloadDate" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_outputCurrentDateText">
+                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="g_outputCurrentDateText" />
+                                    </InArgument>
+                                  </ui:InvokeWorkflowFile.Arguments>
+                                </ui:InvokeWorkflowFile>
+                              </If.Else>
+                            </If>
+                          </Sequence>
                         </ActivityAction>
                       </ui:ForEachRow.Body>
                     </ui:ForEachRow>
