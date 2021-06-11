@@ -8,11 +8,12 @@
     <x:Property Name="in_outputPath" Type="InArgument(x:String)" />
     <x:Property Name="in_specificDownloadDate" Type="InArgument(x:String)" />
     <x:Property Name="in_outputCurrentDateText" Type="InArgument(x:String)" />
+    <x:Property Name="in_imgAccuracy" Type="InArgument(x:Double)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1260,5079</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1260,5987</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SetCustomize_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -73,9 +74,10 @@
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SetCustomize" sap:VirtualizedContainerService.HintSize="1270,5014" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SetCustomize" sap:VirtualizedContainerService.HintSize="1270,5922" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="outputFileName" />
       <Variable x:TypeArguments="x:String" Name="dateAtbName" />
@@ -87,13 +89,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Browser="[in_browser]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="1228,267" sap2010:WorkflowViewState.IdRef="BrowserScope_2" UiBrowser="[in_browser]">
+    <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Browser="[in_browser]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="1228,863" sap2010:WorkflowViewState.IdRef="BrowserScope_2" UiBrowser="[in_browser]">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[in_marketInsight]" sap:VirtualizedContainerService.HintSize="497,159" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+          <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[in_marketInsight]" sap:VirtualizedContainerService.HintSize="497,755" sap2010:WorkflowViewState.IdRef="Switch`1_1">
             <Switch.Default>
               <Sequence DisplayName="Compare" sap:VirtualizedContainerService.HintSize="376,550" sap2010:WorkflowViewState.IdRef="Sequence_23">
                 <sap:WorkflowViewStateService.ViewState>
@@ -129,7 +131,7 @@
                     </ui:CursorPosition>
                   </ui:ClickImage.CursorPosition>
                   <ui:ClickImage.Image>
-                    <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAcCAYAAADst9g0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAP9SURBVGhD7ZfPaxtHFMf71wwse9jDgqLIFIIE1sE2laE0IMUHL1SkQo0LAZkWROWLKXtxGyxqaIkPhiRWBUXgpMLUgQbj4qDahRgENhgco8oH+bBQEOzl2zezo10J2wmx1ksF+4WFnXk7vz4z897bjxAqUIXAA1YIPGCFwANWCDxghcADVgg8YIXAA1YIPGD5ANzGcfUBxjUFjDF6FGjjD1A9tqU9VL+GBt6pZaErSRR/P0WXV3RP8Syrg+kP8TJkfkFDAt/DwhjD2MKeLEtZTzGjKMjWPOLdwy2smgUUzFVsHYqtkXqLnUodB502GusmCgUT64023RunTbmUR6m8gUbb6+vtTgX1gzZO/1yHWSjAXG+gzyxktxvYKJeQL5WxIfsTsg5Qr+zgmOyPSwU8acp6m8bfKKNE469uHTqH5wY0HPDWClIsiuKuLLuyYZ21cGY5y2z+/CndggimjDzyxhQiik6b0RE2oIYs06DHxpHJc/sEdHJL07MziMUzyFNdJq4O3JhalkHTI4hNGWTPIK4yKMkl9Nh1ajlEVBrvSxNmidsVJJektWkiwXToEQ0fT0/juzrV2W9gJhXoE7w/A1MRes/W0JuhnxoOuJh8AmZvpZdJnHYNRtWbfqdqQFNm8NTiJQf43GbvDNrYnNPAtDl4VVUYtAm5505RAJ/b9E7tyTImqY+HL3nhX7z6IY9vfz0RJi5rLQ0WLUKcCznnxTdua+wtjIFNLsNt0XmMz963rmvq5oE/z0FRcpCspDjkHkD+PthH00yAJUz3xDrfMLoVskTAEwODHmEpOVjXPf8bW5UKKvz5ZpKCeZZ6IYk5y3chp23UeOR8K55HMKLeeH5qOOBHS0iyO3RaZNlVn0uhoMruLGLwk10U3QX5AdxG1fDqTp7MQFfjyJD/fj/wJswEw61P7gv31f/89Jf8xEf5EjQnl73rK2QToF7Q3C0iytJYE+5DylpD2vX9fgB3NjC10qJ3B2C6f0C+6VcCb2ElRSf8YiC6EQ0JnNwd+UeF0sLF15bjUyna/1FMQnGDnANg7KvfnEyC7FWeNrpArwdcSS5iX6QSNtrPeExIYUXsuxzv622RadjWa3yfophwJfC+NTgdkj/ah3nvC/zyj1P0U0MDp9lhf/keYpQpXPXjY7dfYJ5nGooKVWFQ4/N44eZx1wMeTc9iQlWh8R8uyoBm147dINrZXiCbnI8aw+e5NLTeLbsEOLXAtnmXsieam6YRfA3j85v/wyxlQF2ct1o4f0cCa1tnbqo4jDyXwmPFGS7vks/n/APzad7mqv78kY/Ag9NFHz46Gkng9cJt3P3xSJZGSyMJfJQVAg9YIfCAFQIPWCHwgBUCD1TAfyfXVkzTD2IQAAAAAElFTkSuQmCC" />
+                    <ui:ImageTarget Image="{x:Null}" Accuracy="[in_imgAccuracy]" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAcCAYAAADst9g0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAP9SURBVGhD7ZfPaxtHFMf71wwse9jDgqLIFIIE1sE2laE0IMUHL1SkQo0LAZkWROWLKXtxGyxqaIkPhiRWBUXgpMLUgQbj4qDahRgENhgco8oH+bBQEOzl2zezo10J2wmx1ksF+4WFnXk7vz4z897bjxAqUIXAA1YIPGCFwANWCDxghcADVgg8YIXAA1YIPGD5ANzGcfUBxjUFjDF6FGjjD1A9tqU9VL+GBt6pZaErSRR/P0WXV3RP8Syrg+kP8TJkfkFDAt/DwhjD2MKeLEtZTzGjKMjWPOLdwy2smgUUzFVsHYqtkXqLnUodB502GusmCgUT64023RunTbmUR6m8gUbb6+vtTgX1gzZO/1yHWSjAXG+gzyxktxvYKJeQL5WxIfsTsg5Qr+zgmOyPSwU8acp6m8bfKKNE469uHTqH5wY0HPDWClIsiuKuLLuyYZ21cGY5y2z+/CndggimjDzyxhQiik6b0RE2oIYs06DHxpHJc/sEdHJL07MziMUzyFNdJq4O3JhalkHTI4hNGWTPIK4yKMkl9Nh1ajlEVBrvSxNmidsVJJektWkiwXToEQ0fT0/juzrV2W9gJhXoE7w/A1MRes/W0JuhnxoOuJh8AmZvpZdJnHYNRtWbfqdqQFNm8NTiJQf43GbvDNrYnNPAtDl4VVUYtAm5505RAJ/b9E7tyTImqY+HL3nhX7z6IY9vfz0RJi5rLQ0WLUKcCznnxTdua+wtjIFNLsNt0XmMz963rmvq5oE/z0FRcpCspDjkHkD+PthH00yAJUz3xDrfMLoVskTAEwODHmEpOVjXPf8bW5UKKvz5ZpKCeZZ6IYk5y3chp23UeOR8K55HMKLeeH5qOOBHS0iyO3RaZNlVn0uhoMruLGLwk10U3QX5AdxG1fDqTp7MQFfjyJD/fj/wJswEw61P7gv31f/89Jf8xEf5EjQnl73rK2QToF7Q3C0iytJYE+5DylpD2vX9fgB3NjC10qJ3B2C6f0C+6VcCb2ElRSf8YiC6EQ0JnNwd+UeF0sLF15bjUyna/1FMQnGDnANg7KvfnEyC7FWeNrpArwdcSS5iX6QSNtrPeExIYUXsuxzv622RadjWa3yfophwJfC+NTgdkj/ah3nvC/zyj1P0U0MDp9lhf/keYpQpXPXjY7dfYJ5nGooKVWFQ4/N44eZx1wMeTc9iQlWh8R8uyoBm147dINrZXiCbnI8aw+e5NLTeLbsEOLXAtnmXsieam6YRfA3j85v/wyxlQF2ct1o4f0cCa1tnbqo4jDyXwmPFGS7vks/n/APzad7mqv78kY/Ag9NFHz46Gkng9cJt3P3xSJZGSyMJfJQVAg9YIfCAFQIPWCHwgBUCD1TAfyfXVkzTD2IQAAAAAElFTkSuQmCC" />
                   </ui:ClickImage.Image>
                   <ui:ClickImage.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="132e81ca-abdf-4b0f-ab7b-b12ddac7e3ed" TimeoutMS="[in_timeout]">
@@ -149,7 +151,7 @@
                 </ui:InvokeWorkflowFile>
               </Sequence>
             </Switch.Default>
-            <Sequence x:Key="1" DisplayName="Time Series" sap:VirtualizedContainerService.HintSize="376,496" sap2010:WorkflowViewState.IdRef="Sequence_21">
+            <Sequence x:Key="1" DisplayName="Time Series" sap:VirtualizedContainerService.HintSize="376,498" sap2010:WorkflowViewState.IdRef="Sequence_21">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -183,7 +185,7 @@
                   </ui:CursorPosition>
                 </ui:ClickImage.CursorPosition>
                 <ui:ClickImage.Image>
-                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFEAAAAZCAYAAABJhMI3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQ4SURBVGhD7ZfRayJHHMf71wwMcuyD1OZiLwSFCFXpBUqFxDxUirTBMw8BQwI59A6k7EvgiCC0vTyEu1ytLzlMCQEDl0pKSpoUvCOQgNAc1sDpwz4UYV++/e3sqqtovNztIRz7gQVnf7Mz3/nu/uY3fgKb98Y20QJsEy3ANtECbBMtwDbRAmwTLcA20QL6mrgdZWBs0BXFNvXZmedgd7Oo6o98UNTab1iaksANDVyawrc/n6JpxG+K1dr7mthsVFGt6tfB/Umwyfs4MNrVakOIVysHKJ6/6zJuwglSbgZn9Blei+lUKH+m4eMcc1uK6HFTrNY+NJ3PZC+YV8aZ0W5xeZhD7vBSbygvsZs7xGXzHMVMErFkxhCponb8C+REAvJGEb26m+dFbMgJJDMFHNdU424PZzK8bBLpstE22F+UwGY20bZRm3tDRoLmLhzXaGYd5eUu6ayQjsdIJp6KdXRpF2g6C8gkr9eZkDf6mv/OJoqUj2qJTYiFOuGaCiISiyEWmqDUc2PuGz/GgxHEYhEEXRycUugf/QnUt6Nw8gmEtP6zHji4D3K5j5HqHhYkBu/yCwzymQZD1MkxEaKxYrPwODh8clkYKfQ7SZt0B9PTP2CX7nVpp15l2Qfu9AvtkaCLftOWVdejXTojQbi4E9FW0MBCEwNYbzlEVq0HKB5Yb5uGchqTzIe1C/qtbGGOS1jYa7miorQ8Bk7j9fOpXkrB79D2QjLinoznrxRTPwVbcxzSwl77nlpaxhgnI+iGrj8N8/vp0n6SgrtLex2Pv6aXJmsrfoOfvmKYNKXBiezH7cgTo6VjoYl6wWnR/bYJ0ccLoW1nnr7UAFZylFatayXQd542qoJXz2Xcm74DiTM4/CmUxAexg3lqB1ZMY+VWEDDmEvrNOgiztos1H9hYBI9MWh5FxtrxM4prX+lSpoi/r8wvr8NoTKQUYbc8CGspYr4eFt6qYqq1F1j2UrFZ+p1alMrsFjzhnrFiD1GgwYaZKOKffYnvup6l68e/RJx2RLz+g/bT2S/wqcThGA8j27PtjMbE/UVIbAabb1Fc3zyJ4LZfphrdzemDz8F8a7jAPhZpz5wZMNgwE6vZu/QlruJItHppokEnkka7ljRp23GLec2MxkT1CKvi2JI3igVVx3wcYfkE/2lNM/VNzNBxxrfaKSxqLU+FhMGd0qxVcbRKC6NikDc6aPF4mIynwYaZ2B4/3Tp3NnEqh/H9r//Sb/145X3QiQkTqUCaGY2JhFqhhXocYFRgJCoa/dKkRfP8GeKmwzZjDnjieVRa3dUK8nGq8IwKjERjOsYRzpqq83UmEvWSjBCdHpiDtJCh0tQS9owCrJazCI93dHJX6Obp/KFRlStUO/lyPc1G+7DfFyo+V9fFh6D9ybhSBrxI7Q/IAJ0jN/FjwDbRAmwTLcA20QJsEy3ANvG9Af4HMnNXBQJRT7UAAAAASUVORK5CYII=" />
+                  <ui:ImageTarget Image="{x:Null}" Accuracy="[in_imgAccuracy]" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFEAAAAZCAYAAABJhMI3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQ4SURBVGhD7ZfRayJHHMf71wwMcuyD1OZiLwSFCFXpBUqFxDxUirTBMw8BQwI59A6k7EvgiCC0vTyEu1ytLzlMCQEDl0pKSpoUvCOQgNAc1sDpwz4UYV++/e3sqqtovNztIRz7gQVnf7Mz3/nu/uY3fgKb98Y20QJsEy3ANtECbBMtwDbRAmwTLcA20QL6mrgdZWBs0BXFNvXZmedgd7Oo6o98UNTab1iaksANDVyawrc/n6JpxG+K1dr7mthsVFGt6tfB/Umwyfs4MNrVakOIVysHKJ6/6zJuwglSbgZn9Blei+lUKH+m4eMcc1uK6HFTrNY+NJ3PZC+YV8aZ0W5xeZhD7vBSbygvsZs7xGXzHMVMErFkxhCponb8C+REAvJGEb26m+dFbMgJJDMFHNdU424PZzK8bBLpstE22F+UwGY20bZRm3tDRoLmLhzXaGYd5eUu6ayQjsdIJp6KdXRpF2g6C8gkr9eZkDf6mv/OJoqUj2qJTYiFOuGaCiISiyEWmqDUc2PuGz/GgxHEYhEEXRycUugf/QnUt6Nw8gmEtP6zHji4D3K5j5HqHhYkBu/yCwzymQZD1MkxEaKxYrPwODh8clkYKfQ7SZt0B9PTP2CX7nVpp15l2Qfu9AvtkaCLftOWVdejXTojQbi4E9FW0MBCEwNYbzlEVq0HKB5Yb5uGchqTzIe1C/qtbGGOS1jYa7miorQ8Bk7j9fOpXkrB79D2QjLinoznrxRTPwVbcxzSwl77nlpaxhgnI+iGrj8N8/vp0n6SgrtLex2Pv6aXJmsrfoOfvmKYNKXBiezH7cgTo6VjoYl6wWnR/bYJ0ccLoW1nnr7UAFZylFatayXQd542qoJXz2Xcm74DiTM4/CmUxAexg3lqB1ZMY+VWEDDmEvrNOgiztos1H9hYBI9MWh5FxtrxM4prX+lSpoi/r8wvr8NoTKQUYbc8CGspYr4eFt6qYqq1F1j2UrFZ+p1alMrsFjzhnrFiD1GgwYaZKOKffYnvup6l68e/RJx2RLz+g/bT2S/wqcThGA8j27PtjMbE/UVIbAabb1Fc3zyJ4LZfphrdzemDz8F8a7jAPhZpz5wZMNgwE6vZu/QlruJItHppokEnkka7ljRp23GLec2MxkT1CKvi2JI3igVVx3wcYfkE/2lNM/VNzNBxxrfaKSxqLU+FhMGd0qxVcbRKC6NikDc6aPF4mIynwYaZ2B4/3Tp3NnEqh/H9r//Sb/145X3QiQkTqUCaGY2JhFqhhXocYFRgJCoa/dKkRfP8GeKmwzZjDnjieVRa3dUK8nGq8IwKjERjOsYRzpqq83UmEvWSjBCdHpiDtJCh0tQS9owCrJazCI93dHJX6Obp/KFRlStUO/lyPc1G+7DfFyo+V9fFh6D9ybhSBrxI7Q/IAJ0jN/FjwDbRAmwTLcA20QJsEy3ANvG9Af4HMnNXBQJRT7UAAAAASUVORK5CYII=" />
                 </ui:ClickImage.Image>
                 <ui:ClickImage.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="ca58002a-906f-43dd-b92c-3bcdc701ed66" TimeoutMS="[in_timeout]">
@@ -202,7 +204,7 @@
                 </Assign.Value>
               </Assign>
             </Sequence>
-            <Sequence x:Key="2" DisplayName="Market Summary" sap:VirtualizedContainerService.HintSize="376,548" sap2010:WorkflowViewState.IdRef="Sequence_24">
+            <Sequence x:Key="2" DisplayName="Market Summary" sap:VirtualizedContainerService.HintSize="376,550" sap2010:WorkflowViewState.IdRef="Sequence_24">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -236,7 +238,7 @@
                   </ui:CursorPosition>
                 </ui:ClickImage.CursorPosition>
                 <ui:ClickImage.Image>
-                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+                  <ui:ImageTarget Image="{x:Null}" Accuracy="[in_imgAccuracy]" Profile="Basic" TargetImageBase64="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" />
                 </ui:ClickImage.Image>
                 <ui:ClickImage.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="ca58002a-906f-43dd-b92c-3bcdc701ed66" TimeoutMS="[in_timeout]">
@@ -268,13 +270,13 @@
       </Assign.Value>
     </Assign>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1228,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;==== Download Detail ====&quot; + vbCrLf + &quot;regionName : &quot; + in_regionName + vbCrLf + &quot;age : &quot; + in_demographics + vbCrLf + &quot;isTimeSeries : &quot; + in_marketInsight.ToString]" />
-    <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Browser="[in_browser]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="1228,4281" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[in_browser]">
+    <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Browser="[in_browser]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="1228,4593" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[in_browser]">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Browser Do" sap:VirtualizedContainerService.HintSize="1194,4173" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Browser Do" sap:VirtualizedContainerService.HintSize="1194,4485" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -433,18 +435,27 @@
                 </Sequence>
               </If.Then>
             </If>
-            <If Condition="[String.IsNullOrEmpty(in_demographics)]" sap:VirtualizedContainerService.HintSize="1152,2486" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[String.IsNullOrEmpty(in_demographics)]" sap:VirtualizedContainerService.HintSize="1152,2798" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadFile" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="[downloadFileInvokeName]">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_outputName">[outputFileName + "_All"]</InArgument>
-                    <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[in_browser]</InArgument>
-                    <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">[in_timeout]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_outputName">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="outputFileName + &quot;_All&quot;" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
+                      <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="in_browser" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">
+                      <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_timeout" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Double" x:Key="in_imgAccuracy">
+                      <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="in_imgAccuracy" />
+                    </InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="773,2329" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="773,2641" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -469,13 +480,13 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="731,1945" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Split(in_demographics.Replace(&quot; &quot;, &quot;&quot;), &quot;,&quot;)]">
+                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="731,2257" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Split(in_demographics.Replace(&quot; &quot;, &quot;&quot;), &quot;,&quot;)]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="x:String">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:String" Name="demoStr" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="For Each Age Do" sap:VirtualizedContainerService.HintSize="695,1812" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <Sequence DisplayName="For Each Age Do" sap:VirtualizedContainerService.HintSize="695,2124" sap2010:WorkflowViewState.IdRef="Sequence_5">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="s:String[]" Name="demoGroupSplit" />
                             <Variable x:TypeArguments="s:String[]" Name="demoSplit" />
@@ -616,9 +627,9 @@
                               </Sequence>
                             </If.Else>
                           </If>
-                          <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[in_marketInsight]" sap:VirtualizedContainerService.HintSize="653,159" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                          <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[in_marketInsight]" sap:VirtualizedContainerService.HintSize="653,471" sap2010:WorkflowViewState.IdRef="Switch`1_2">
                             <Switch.Default>
-                              <Sequence DisplayName="Compare" sap:VirtualizedContainerService.HintSize="376,413" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <Sequence DisplayName="Compare" sap:VirtualizedContainerService.HintSize="376,412" sap2010:WorkflowViewState.IdRef="Sequence_13">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -647,7 +658,7 @@
                                   <ui:OnImageAppear.Body>
                                     <ui:OnImageVanish Body="{x:Null}" ContinueOnError="True" DisplayName="Wait Loading Vanish" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="OnImageVanish_4" RepeatForever="False">
                                       <ui:OnImageVanish.Image>
-                                        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFoAAAAiCAYAAADf2c6uAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN2SURBVGhD7ZdtS1RBFMf7LoYtJBjmmmIY1YvEKLXcLSoqSizyaYlqjeiBKKIwKoKiwpJKisTMIvOpddPNlt6U2ZpaWFCIIIHfYOJ/4Axzd+9a7d4ddnFe/Llz5pw7D787c2bukrnf88Io9TKgNcmA1iQDWpMMaE0yoDXJgNYkA1qTDGhNMqA1yYDWJANakwxoTTKgNSkh0N09faLlbis97fyp1O49e0VW1lJ6wu7seiHc7gLRfPlKTGw6KSHQ0ZPVqei+9+2vJrukZE1MbDop40FPfp0Wx/xNYjA4HBObTkop6MiXSXH6zFlRXV1Dz9Gx8ZiYgUBQ1Dc0UszFS81i+sdPi//XzKxs42Hb45i+h9+GKY09ae8g++OniLTRPz4Cv6u2C6EOPsQgFu9B0WNwQikD/aDtkcjOXkZxLNio5xje9qpcLpcYCb8nP1Zrbu4Ki5/b5L7xEWBz6kD7sJfn5MT0f+78hbh9o18uc/9OKiWgsSJ4krV19WIsMkFP2KiHPzA4JCfWNxCglQtYsA/V1lE7NQcOkg3YwTch0dHZJcH/DTSEHYK+vd7tZBcXr6YYte8TJ09RjAo+Y0Dfa71Pfqyqmdk5WZ+f76b6GzdvWeKnvn2nyR456re0y/HqjSK673ig1cNRhW/3DgS4HJMxoO0mAu3YuYvq4YeND4KPwRNkcbtsq+nGCdB2489I0MiF8EeDXrtuPdUDDm9fpBIcSnYrmtOP06CRmtQ2oIwE3dv/Wg76w+hnqsPBxuDwk2G36n2+w5Z2y8o2ko1czTHlFZWWmERAI3WhjN2EcaHuZXePjGHQOEuePnsu019oJExCGXXw/esNJSnQOKnxV6YKVzXEMCTEVHm88lTHqoa/vaNTTgx+iG2kGMTcvtMi6zaUlorCoiJpJwMacPhQBWx1fBCDLlhVSLa/6bjlAEW5odFHZbWfhZQUaDsxANwiPN5tFh9sXkEQJsA+TJTbxSFoF5OXt1Lm+WRAQ0Ohd9Qe11dUbpFlBr1pcznZV69dp52JMUIoo47f4zYXUkKg/0fYYsi/AG/nRz38dj4WYsYnpmx9iQofHGNDu2hf3WHqTckppRx0umprlYdWNO7a2BWcOninOK1FCRorFimJD2cW0kC8nZesFu2KhgD1VW8/3R7w02QX45QWNWidMqA1yYDWJANai+bFH4o9KFjOjMfdAAAAAElFTkSuQmCC" />
+                                        <ui:ImageTarget Image="{x:Null}" Accuracy="[in_imgAccuracy]" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFoAAAAiCAYAAADf2c6uAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN2SURBVGhD7ZdtS1RBFMf7LoYtJBjmmmIY1YvEKLXcLSoqSizyaYlqjeiBKKIwKoKiwpJKisTMIvOpddPNlt6U2ZpaWFCIIIHfYOJ/4Axzd+9a7d4ddnFe/Llz5pw7D787c2bukrnf88Io9TKgNcmA1iQDWpMMaE0yoDXJgNYkA1qTDGhNMqA1yYDWJANakwxoTTKgNSkh0N09faLlbis97fyp1O49e0VW1lJ6wu7seiHc7gLRfPlKTGw6KSHQ0ZPVqei+9+2vJrukZE1MbDop40FPfp0Wx/xNYjA4HBObTkop6MiXSXH6zFlRXV1Dz9Gx8ZiYgUBQ1Dc0UszFS81i+sdPi//XzKxs42Hb45i+h9+GKY09ae8g++OniLTRPz4Cv6u2C6EOPsQgFu9B0WNwQikD/aDtkcjOXkZxLNio5xje9qpcLpcYCb8nP1Zrbu4Ki5/b5L7xEWBz6kD7sJfn5MT0f+78hbh9o18uc/9OKiWgsSJ4krV19WIsMkFP2KiHPzA4JCfWNxCglQtYsA/V1lE7NQcOkg3YwTch0dHZJcH/DTSEHYK+vd7tZBcXr6YYte8TJ09RjAo+Y0Dfa71Pfqyqmdk5WZ+f76b6GzdvWeKnvn2nyR456re0y/HqjSK673ig1cNRhW/3DgS4HJMxoO0mAu3YuYvq4YeND4KPwRNkcbtsq+nGCdB2489I0MiF8EeDXrtuPdUDDm9fpBIcSnYrmtOP06CRmtQ2oIwE3dv/Wg76w+hnqsPBxuDwk2G36n2+w5Z2y8o2ko1czTHlFZWWmERAI3WhjN2EcaHuZXePjGHQOEuePnsu019oJExCGXXw/esNJSnQOKnxV6YKVzXEMCTEVHm88lTHqoa/vaNTTgx+iG2kGMTcvtMi6zaUlorCoiJpJwMacPhQBWx1fBCDLlhVSLa/6bjlAEW5odFHZbWfhZQUaDsxANwiPN5tFh9sXkEQJsA+TJTbxSFoF5OXt1Lm+WRAQ0Ohd9Qe11dUbpFlBr1pcznZV69dp52JMUIoo47f4zYXUkKg/0fYYsi/AG/nRz38dj4WYsYnpmx9iQofHGNDu2hf3WHqTckppRx0umprlYdWNO7a2BWcOninOK1FCRorFimJD2cW0kC8nZesFu2KhgD1VW8/3R7w02QX45QWNWidMqA1yYDWJANai+bFH4o9KFjOjMfdAAAAAElFTkSuQmCC" />
                                       </ui:OnImageVanish.Image>
                                       <ui:OnImageVanish.Target>
                                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="45d18c05-ed25-4de1-853e-cff4e6d35908" TimeoutMS="[in_timeout]">
@@ -665,7 +676,7 @@
                                     </ui:OnImageVanish>
                                   </ui:OnImageAppear.Body>
                                   <ui:OnImageAppear.Image>
-                                    <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Enhanced" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFMAAAAkCAYAAAD1lQZ5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANxSURBVGhD7ZdrS5RBFMf7LoYJCYa5phhG9SIxSi13i4qKEou8EpVGdCGKKIyKoKiwpJIiMbPIvKWmZuKbMtPUwoJCBAn8BhP/A2eYZ3dkzT3JU86LP8+cy3Nm5rdzeXbJ9K8Z5SQjB1NQDqagHExBOZiCcjAF5WAKysEUlIMpKAdTUA6moBxMQTmYgnIwBeVgCioqzKbmVlV9t4aetvjf1O49e1Vc3FJ6wm5ofKECgVRVdflKRK4fFBVm+IQWUuF979tfQHZm5pqIXD/on4I59mVCHauoVJ1dPRG5fpAYzOHPY+r0mbOqoKCQnoNDIxE57R1dqqS0jHIuXqpSE99/eOI/J6d0jYe1jyP67nnbT0fOk7p6sj98HNY2+gdoftesC8GHGHKQi/eg8DHEIhGYD2ofqfj4ZZTHgg0/5/AWNZWQkKD6+gcojlWXlLTCE+ea3DdAw+ZtjvqwlycmRvR/7vyFWftGv9zm/iUUM0z8sjyRouISNTQ8Sk/Y8CPe0dmtB9/a3kErEEBgHyoqpjqFBw6SDaBdb3pVfUOjhhsNJoSVjr5Doe1kZ2Ssphyz7xMnT1GOCddXMO/V3Kc4Vsfk1LT2p6QEyH/j5i1P/vjXbzShI0crPHU537ypw/ueDaZ5IZmAbe9AAMg5voJpGyy0Y+cu8iMOG9ABnCfB4rpsm0eDBEzb+H0LE2cT4uEw165bT34A4K2GbY+LwLYy+aiQholjxKwB+RZmS9trPbD3g5/Ih8uE4eBD27Z6y8sPe+pmZ28kG2cn5+Tk5nly5gMTxwza2BUYF3wvm5p1DsPE2f702XN9VPX29ZPQhg+xaDf/nGHiBsS/D1P4zEEOg0BOfjCkb0usTsTr6hv04BGH2MZxgJzbd6q1b0NWlkpLT9d2LDABgC8yADXHBzHM1FVpZFdUHvdcWmiXlpVT2+zHpjnDtIknids5GNrmicHmlQBhkBzDZLguLh5bTnLySn3uxgIT6u59R/XYn5u3RbcZ5qbNOWRfvXaddhjGCKENH7/HNW2KCvNPhO2A8xBwbXH4EbfFWMgZGR23xuYr/KgYG+qivrlTzC+QWCUK06/amh+klYlvUaxu3ua84qX038PEysPxwRciC1t2th00Xy2KlQkB3KuWNrqV8cfBlhOrFg3MhZCDKSgHU1AOpqAcTDHNqN8m+hhRFBP53wAAAABJRU5ErkJggg==" />
+                                    <ui:ImageTarget Image="{x:Null}" Accuracy="[in_imgAccuracy]" Profile="Enhanced" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFMAAAAkCAYAAAD1lQZ5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANxSURBVGhD7ZdrS5RBFMf7LoYJCYa5phhG9SIxSi13i4qKEou8EpVGdCGKKIyKoKiwpJIiMbPIvKWmZuKbMtPUwoJCBAn8BhP/A2eYZ3dkzT3JU86LP8+cy3Nm5rdzeXbJ9K8Z5SQjB1NQDqagHExBOZiCcjAF5WAKysEUlIMpKAdTUA6moBxMQTmYgnIwBeVgCioqzKbmVlV9t4aetvjf1O49e1Vc3FJ6wm5ofKECgVRVdflKRK4fFBVm+IQWUuF979tfQHZm5pqIXD/on4I59mVCHauoVJ1dPRG5fpAYzOHPY+r0mbOqoKCQnoNDIxE57R1dqqS0jHIuXqpSE99/eOI/J6d0jYe1jyP67nnbT0fOk7p6sj98HNY2+gdoftesC8GHGHKQi/eg8DHEIhGYD2ofqfj4ZZTHgg0/5/AWNZWQkKD6+gcojlWXlLTCE+ea3DdAw+ZtjvqwlycmRvR/7vyFWftGv9zm/iUUM0z8sjyRouISNTQ8Sk/Y8CPe0dmtB9/a3kErEEBgHyoqpjqFBw6SDaBdb3pVfUOjhhsNJoSVjr5Doe1kZ2Ssphyz7xMnT1GOCddXMO/V3Kc4Vsfk1LT2p6QEyH/j5i1P/vjXbzShI0crPHU537ypw/ueDaZ5IZmAbe9AAMg5voJpGyy0Y+cu8iMOG9ABnCfB4rpsm0eDBEzb+H0LE2cT4uEw165bT34A4K2GbY+LwLYy+aiQholjxKwB+RZmS9trPbD3g5/Ih8uE4eBD27Z6y8sPe+pmZ28kG2cn5+Tk5nly5gMTxwza2BUYF3wvm5p1DsPE2f702XN9VPX29ZPQhg+xaDf/nGHiBsS/D1P4zEEOg0BOfjCkb0usTsTr6hv04BGH2MZxgJzbd6q1b0NWlkpLT9d2LDABgC8yADXHBzHM1FVpZFdUHvdcWmiXlpVT2+zHpjnDtIknids5GNrmicHmlQBhkBzDZLguLh5bTnLySn3uxgIT6u59R/XYn5u3RbcZ5qbNOWRfvXaddhjGCKENH7/HNW2KCvNPhO2A8xBwbXH4EbfFWMgZGR23xuYr/KgYG+qivrlTzC+QWCUK06/amh+klYlvUaxu3ua84qX038PEysPxwRciC1t2th00Xy2KlQkB3KuWNrqV8cfBlhOrFg3MhZCDKSgHU1AOpqAcTDHNqN8m+hhRFBP53wAAAABJRU5ErkJggg==" />
                                   </ui:OnImageAppear.Image>
                                   <ui:OnImageAppear.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="00e365c4-c321-407c-a624-8204a56707ec" TimeoutMS="[in_timeout]">
@@ -681,11 +692,20 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:OnImageAppear>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadFile" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="[downloadFileInvokeName]">
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadFile" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="[downloadFileInvokeName]">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_outputName">[outputFileNameFull]</InArgument>
-                                    <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[in_browser]</InArgument>
-                                    <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">[in_timeout]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_outputName">
+                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="outputFileNameFull" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
+                                      <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="in_browser" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">
+                                      <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_timeout" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:Double" x:Key="in_imgAccuracy">
+                                      <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="in_imgAccuracy" />
+                                    </InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </Sequence>
@@ -698,9 +718,18 @@
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadFile" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="[downloadFileInvokeName]">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_outputName">[outputFileNameFull]</InArgument>
-                                  <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[in_browser]</InArgument>
-                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">[in_timeout]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_outputName">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="outputFileNameFull" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
+                                    <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="in_browser" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">
+                                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_timeout" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Double" x:Key="in_imgAccuracy">
+                                    <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="in_imgAccuracy" />
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                               <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Demographics (Re-Open)" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_27" KeyModifiers="None" MouseButton="BTN_LEFT">
@@ -777,9 +806,18 @@
                               </Delay>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadFile" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="[downloadFileInvokeName]">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_outputName">[outputFileNameFull]</InArgument>
-                                  <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[in_browser]</InArgument>
-                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">[in_timeout]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_outputName">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="outputFileNameFull" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
+                                    <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="in_browser" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">
+                                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_timeout" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Double" x:Key="in_imgAccuracy">
+                                    <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="in_imgAccuracy" />
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>

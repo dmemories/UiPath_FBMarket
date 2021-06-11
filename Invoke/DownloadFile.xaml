@@ -3,11 +3,12 @@
     <x:Property Name="in_outputName" Type="InArgument(x:String)" />
     <x:Property Name="in_browser" Type="InArgument(ui:Browser)" />
     <x:Property Name="in_timeout" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_imgAccuracy" Type="InArgument(x:Double)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>910,2177</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>877,2177</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -155,7 +156,7 @@
                 </ui:CursorPosition>
               </ui:ClickImage.CursorPosition>
               <ui:ClickImage.Image>
-                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAqCAYAAAD1T9h6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMASURBVGhD7ZjLaxRBEMb927x49SqC4MmLByEnQTx48iKSqzfxoHgQCUQxmgTxIMuK+NqwPghGEtw8fMQkIPgo5zdLr7uz/ayeZRnIBx+Z7a6urq+nu7omR6ThOBQwbdQm4Ou+SGdD5ElX5N5LkTttkdutPnmmjT5ssK0L2QLe90QWXovMPS8CfCvyZl1kbVuktyuys9cnz7TRhw22jGFsLtQCPhYBsaqLHZHu5//BxpIxjMUHvrRQCWh9EJl/oQu8SnzgC58aJAnY/9l/9WwDWzA5xCe+mSMF0QJwzOtur9oDqIP4Zo4UEdECWJ1JBm/IHMwViygB7M9JbBsXmSv2TAQFkCE4ZLaJJknmjMlOQQHsyTqyTSqZk7lD8ArgoiFX2ybwcfuHyNEzcyOkzWbrI3OHLjuvAA6TZvVX1g7k+MyDwW8EtLvfR2xiyNyhA+0UQL3ClW9zHOLisy05d+Xp4PfMbEsetjdHbGJJDL7aySmgLMyUmefG/VW5fP3V4DfPtA3bxJIYiMUFpwAqR4ovm9MQqwFXBaWwLACLWFxwCiADUEHanIZY3TLVLZVCYvBlI6cAavjhkjiGvW9/yr8nzj8qD7Jp55m2YZtYEgOxuOAUwIeIzaGLBGlS5rGz82P9tJn+Tzu/xvp9JBYXahMAT15YktlbK9Y+ePVmpxSwufvX2u+iSoBmC7Gypy89toqgjb71L7/H+nxUbyHtIbaJMMGnbh2oPsQ5adSIIH1eu/tOHTxUp9GciwwS8KmLyyW1wUP1RZZaSrDStnYbU2zVpQRIKebILrZ2G2Nts4o5kFJOs1VMng8RW5uPKrPLaUAG0JTUuWROX/YxCApo/CclaPRHvQGHqbH/VgGN/8cWwDGrM4nthE98pwQPkgQYsD85ZHVkJ3zgK3bPV6ESAMgQvG5ytUYIYxiLj5hs44JagAEXDa+eK59tQPFFBTlcivNMW1mYFTbYMiZ0ScUgW4AB9UpZABaVI6tKDc+HCOSZNvqw8dU2qahNwLRwKGC6EPkHzuNrhGdIwKEAAAAASUVORK5CYII=" />
+                <ui:ImageTarget Image="{x:Null}" Accuracy="[in_imgAccuracy]" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAqCAYAAAD1T9h6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMASURBVGhD7ZjLaxRBEMb927x49SqC4MmLByEnQTx48iKSqzfxoHgQCUQxmgTxIMuK+NqwPghGEtw8fMQkIPgo5zdLr7uz/ayeZRnIBx+Z7a6urq+nu7omR6ThOBQwbdQm4Ou+SGdD5ElX5N5LkTttkdutPnmmjT5ssK0L2QLe90QWXovMPS8CfCvyZl1kbVuktyuys9cnz7TRhw22jGFsLtQCPhYBsaqLHZHu5//BxpIxjMUHvrRQCWh9EJl/oQu8SnzgC58aJAnY/9l/9WwDWzA5xCe+mSMF0QJwzOtur9oDqIP4Zo4UEdECWJ1JBm/IHMwViygB7M9JbBsXmSv2TAQFkCE4ZLaJJknmjMlOQQHsyTqyTSqZk7lD8ArgoiFX2ybwcfuHyNEzcyOkzWbrI3OHLjuvAA6TZvVX1g7k+MyDwW8EtLvfR2xiyNyhA+0UQL3ClW9zHOLisy05d+Xp4PfMbEsetjdHbGJJDL7aySmgLMyUmefG/VW5fP3V4DfPtA3bxJIYiMUFpwAqR4ovm9MQqwFXBaWwLACLWFxwCiADUEHanIZY3TLVLZVCYvBlI6cAavjhkjiGvW9/yr8nzj8qD7Jp55m2YZtYEgOxuOAUwIeIzaGLBGlS5rGz82P9tJn+Tzu/xvp9JBYXahMAT15YktlbK9Y+ePVmpxSwufvX2u+iSoBmC7Gypy89toqgjb71L7/H+nxUbyHtIbaJMMGnbh2oPsQ5adSIIH1eu/tOHTxUp9GciwwS8KmLyyW1wUP1RZZaSrDStnYbU2zVpQRIKebILrZ2G2Nts4o5kFJOs1VMng8RW5uPKrPLaUAG0JTUuWROX/YxCApo/CclaPRHvQGHqbH/VgGN/8cWwDGrM4nthE98pwQPkgQYsD85ZHVkJ3zgK3bPV6ESAMgQvG5ytUYIYxiLj5hs44JagAEXDa+eK59tQPFFBTlcivNMW1mYFTbYMiZ0ScUgW4AB9UpZABaVI6tKDc+HCOSZNvqw8dU2qahNwLRwKGC6EPkHzuNrhGdIwKEAAAAASUVORK5CYII=" />
               </ui:ClickImage.Image>
               <ui:ClickImage.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="07c8375d-a2f8-4d40-bf8c-d772ce864904" TimeoutMS="[in_timeout]">
@@ -188,7 +189,7 @@
                     </ui:CursorPosition>
                   </ui:ClickImage.CursorPosition>
                   <ui:ClickImage.Image>
-                    <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAqCAYAAAD1T9h6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMASURBVGhD7ZjLaxRBEMb927x49SqC4MmLByEnQTx48iKSqzfxoHgQCUQxmgTxIMuK+NqwPghGEtw8fMQkIPgo5zdLr7uz/ayeZRnIBx+Z7a6urq+nu7omR6ThOBQwbdQm4Ou+SGdD5ElX5N5LkTttkdutPnmmjT5ssK0L2QLe90QWXovMPS8CfCvyZl1kbVuktyuys9cnz7TRhw22jGFsLtQCPhYBsaqLHZHu5//BxpIxjMUHvrRQCWh9EJl/oQu8SnzgC58aJAnY/9l/9WwDWzA5xCe+mSMF0QJwzOtur9oDqIP4Zo4UEdECWJ1JBm/IHMwViygB7M9JbBsXmSv2TAQFkCE4ZLaJJknmjMlOQQHsyTqyTSqZk7lD8ArgoiFX2ybwcfuHyNEzcyOkzWbrI3OHLjuvAA6TZvVX1g7k+MyDwW8EtLvfR2xiyNyhA+0UQL3ClW9zHOLisy05d+Xp4PfMbEsetjdHbGJJDL7aySmgLMyUmefG/VW5fP3V4DfPtA3bxJIYiMUFpwAqR4ovm9MQqwFXBaWwLACLWFxwCiADUEHanIZY3TLVLZVCYvBlI6cAavjhkjiGvW9/yr8nzj8qD7Jp55m2YZtYEgOxuOAUwIeIzaGLBGlS5rGz82P9tJn+Tzu/xvp9JBYXahMAT15YktlbK9Y+ePVmpxSwufvX2u+iSoBmC7Gypy89toqgjb71L7/H+nxUbyHtIbaJMMGnbh2oPsQ5adSIIH1eu/tOHTxUp9GciwwS8KmLyyW1wUP1RZZaSrDStnYbU2zVpQRIKebILrZ2G2Nts4o5kFJOs1VMng8RW5uPKrPLaUAG0JTUuWROX/YxCApo/CclaPRHvQGHqbH/VgGN/8cWwDGrM4nthE98pwQPkgQYsD85ZHVkJ3zgK3bPV6ESAMgQvG5ytUYIYxiLj5hs44JagAEXDa+eK59tQPFFBTlcivNMW1mYFTbYMiZ0ScUgW4AB9UpZABaVI6tKDc+HCOSZNvqw8dU2qahNwLRwKGC6EPkHzuNrhGdIwKEAAAAASUVORK5CYII=" />
+                    <ui:ImageTarget Image="{x:Null}" Accuracy="[in_imgAccuracy]" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAqCAYAAAD1T9h6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMASURBVGhD7ZjLaxRBEMb927x49SqC4MmLByEnQTx48iKSqzfxoHgQCUQxmgTxIMuK+NqwPghGEtw8fMQkIPgo5zdLr7uz/ayeZRnIBx+Z7a6urq+nu7omR6ThOBQwbdQm4Ou+SGdD5ElX5N5LkTttkdutPnmmjT5ssK0L2QLe90QWXovMPS8CfCvyZl1kbVuktyuys9cnz7TRhw22jGFsLtQCPhYBsaqLHZHu5//BxpIxjMUHvrRQCWh9EJl/oQu8SnzgC58aJAnY/9l/9WwDWzA5xCe+mSMF0QJwzOtur9oDqIP4Zo4UEdECWJ1JBm/IHMwViygB7M9JbBsXmSv2TAQFkCE4ZLaJJknmjMlOQQHsyTqyTSqZk7lD8ArgoiFX2ybwcfuHyNEzcyOkzWbrI3OHLjuvAA6TZvVX1g7k+MyDwW8EtLvfR2xiyNyhA+0UQL3ClW9zHOLisy05d+Xp4PfMbEsetjdHbGJJDL7aySmgLMyUmefG/VW5fP3V4DfPtA3bxJIYiMUFpwAqR4ovm9MQqwFXBaWwLACLWFxwCiADUEHanIZY3TLVLZVCYvBlI6cAavjhkjiGvW9/yr8nzj8qD7Jp55m2YZtYEgOxuOAUwIeIzaGLBGlS5rGz82P9tJn+Tzu/xvp9JBYXahMAT15YktlbK9Y+ePVmpxSwufvX2u+iSoBmC7Gypy89toqgjb71L7/H+nxUbyHtIbaJMMGnbh2oPsQ5adSIIH1eu/tOHTxUp9GciwwS8KmLyyW1wUP1RZZaSrDStnYbU2zVpQRIKebILrZ2G2Nts4o5kFJOs1VMng8RW5uPKrPLaUAG0JTUuWROX/YxCApo/CclaPRHvQGHqbH/VgGN/8cWwDGrM4nthE98pwQPkgQYsD85ZHVkJ3zgK3bPV6ESAMgQvG5ytUYIYxiLj5hs44JagAEXDa+eK59tQPFFBTlcivNMW1mYFTbYMiZ0ScUgW4AB9UpZABaVI6tKDc+HCOSZNvqw8dU2qahNwLRwKGC6EPkHzuNrhGdIwKEAAAAASUVORK5CYII=" />
                   </ui:ClickImage.Image>
                   <ui:ClickImage.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="07c8375d-a2f8-4d40-bf8c-d772ce864904" TimeoutMS="[in_timeout]">
@@ -285,7 +286,7 @@
                 </ui:CursorPosition>
               </ui:ClickImage.CursorPosition>
               <ui:ClickImage.Image>
-                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC8AAAAOCAYAAAC/10U/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEiSURBVEhL3VTLFQMhCLQq67Ebi7EXa7EDAigufpPN85DNYd66OsAAokkpwVPxB+KDA2NMgYPQkc4hgKtxMqyPkKIHayz4KBxZ72GyoRKM/z60pHP4RNgd8VR16yFODs/jtHgml/Z1h8GpFruAexG8NeB0Z3Ty3EWxmV2/lTC933E2PsvAZlFEaIRVKIcklhPJZ5RgtumCIm8sCHFEiI63Er/32b42JcuaAAmtgbRDqQCup1UvUElmdGKm+2r9xufwVEZvM4ENRSR15gpKHKqAfNm24a/wjfi1TxxYfF2qs3x9WNBwl1VQ+rcOq64dU9D57Fy4Kf6NzzqwY1uuOTAsVActZ/214CSLTeNLcFc8YuNzuDZPAiajslKYkX8ND658ghft3of5IUVR9wAAAABJRU5ErkJggg==" />
+                <ui:ImageTarget Image="{x:Null}" Accuracy="[in_imgAccuracy]" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC8AAAAOCAYAAAC/10U/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEiSURBVEhL3VTLFQMhCLQq67Ebi7EXa7EDAigufpPN85DNYd66OsAAokkpwVPxB+KDA2NMgYPQkc4hgKtxMqyPkKIHayz4KBxZ72GyoRKM/z60pHP4RNgd8VR16yFODs/jtHgml/Z1h8GpFruAexG8NeB0Z3Ty3EWxmV2/lTC933E2PsvAZlFEaIRVKIcklhPJZ5RgtumCIm8sCHFEiI63Er/32b42JcuaAAmtgbRDqQCup1UvUElmdGKm+2r9xufwVEZvM4ENRSR15gpKHKqAfNm24a/wjfi1TxxYfF2qs3x9WNBwl1VQ+rcOq64dU9D57Fy4Kf6NzzqwY1uuOTAsVActZ/214CSLTeNLcFc8YuNzuDZPAiajslKYkX8ND658ghft3of5IUVR9wAAAABJRU5ErkJggg==" />
               </ui:ClickImage.Image>
               <ui:ClickImage.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="97766610-1805-473f-9fae-db984f9c939c" TimeoutMS="[in_timeout]">
@@ -307,7 +308,7 @@
                 </ui:CursorPosition>
               </ui:ClickImage.CursorPosition>
               <ui:ClickImage.Image>
-                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAADsAAAARCAYAAABjEtTjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADASURBVFhH7ZW5FQMhDAWpSeVQjHpRKZRCJTIC4+VYZ/znfZhgAkDJ6MLFGPVfOLK7cmR3BSsrXp1zH4hD8y7qHSmHeg7KlOK8NDFrwclm0VnmEu5lxY/JWA9Itoh5Ge4DKzmvks+XbGCCVrSCke2kWiwJtZpvWU4dQKxhil0PTvZWoK24yZZZnjoAxO8rKxZb77A8YmbLMrtLzlpAsolJoLTtt22clxR4dnGyxvDP9pXuZQ37fpDCWNmHcWT3JOoLGKHJUMXSPN0AAAAASUVORK5CYII=" />
+                <ui:ImageTarget Image="{x:Null}" Accuracy="[in_imgAccuracy]" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAADsAAAARCAYAAABjEtTjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADASURBVFhH7ZW5FQMhDAWpSeVQjHpRKZRCJTIC4+VYZ/znfZhgAkDJ6MLFGPVfOLK7cmR3BSsrXp1zH4hD8y7qHSmHeg7KlOK8NDFrwclm0VnmEu5lxY/JWA9Itoh5Ge4DKzmvks+XbGCCVrSCke2kWiwJtZpvWU4dQKxhil0PTvZWoK24yZZZnjoAxO8rKxZb77A8YmbLMrtLzlpAsolJoLTtt22clxR4dnGyxvDP9pXuZQ37fpDCWNmHcWT3JOoLGKHJUMXSPN0AAAAASUVORK5CYII=" />
               </ui:ClickImage.Image>
               <ui:ClickImage.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="97766610-1805-473f-9fae-db984f9c939c" TimeoutMS="[in_timeout]">
@@ -321,8 +322,8 @@
         </ActivityAction>
       </ui:GetLastDownloadedFile.Body>
     </ui:GetLastDownloadedFile>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;=== Move Detail ===&quot;  + vbCrlf + &quot;sourcePath : &quot; + downloadFIle.FullName + vbCrlf + &quot;targetPath : &quot; + in_outputName + System.IO.Path.GetExtension(downloadFile.Name)]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DFile_Move" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="DearLib\DFile_Move.xaml">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="560,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;=== Move Detail ===&quot;  + vbCrlf + &quot;sourcePath : &quot; + downloadFIle.FullName + vbCrlf + &quot;targetPath : &quot; + in_outputName + System.IO.Path.GetExtension(downloadFile.Name)]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DFile_Move" sap:VirtualizedContainerService.HintSize="560,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="DearLib\DFile_Move.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_sourcePath">[downloadFile.FullName]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_destPath">[in_outputName + System.IO.Path.GetExtension(downloadFile.Name)]</InArgument>
